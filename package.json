@@ -1,5 +1,23 @@
 {
   "dependencies": {
+    "colors": "^1.4.0",
     "prompt-sync": "^4.2.0"
-  }
+  },
+  "name": "guessinggame",
+  "description": "",
+  "version": "0.1.0",
+  "main": "guessing-game-callback-named.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/llogostevo/guessingGame.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/llogostevo/guessingGame/issues"
+  },
+  "homepage": "https://github.com/llogostevo/guessingGame#readme"
 }
