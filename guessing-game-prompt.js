@@ -1,20 +1,15 @@
 /* 
-ISSUES WITH IT hanging when 
-
+Uses prompt modulle, requires installation of 
+ Run **npm install prompt-sync** in the terminal
 */
 
 // ##### USER INPUT INTERFACE SETUP ##### //
 
-const readline = require('readline');
-
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
+// this is another way that behaves a bit more normally than the readline module. 
+const prompt = require('prompt-sync')();
 
 // ##### GLOBAL VARIABLES ##### //
 let secretNumber;
-
 
 // ##### GLOBAL FUNCTIONS ##### //
 
@@ -36,34 +31,35 @@ function randomInRange(min, max) {
 }
 
 function askGuess(){
-    rl.question('Please Enter a number ', (answer) => {
-        if (checkGuess(answer)==true){
+    const guess = prompt('Guess a number?: ');
+        if (checkGuess(guess)==true){
             console.log("You Win")
-            rl.close();
         } else {
             // recursive call, to re-ask guess if teh answer didnt return a true value
             askGuess()
         }
-      });
 }
 
-
 function askRange(){
-
-    rl.question('Enter Max: ', max => {
-      console.log(`Max: ${max}`);
-      
-        rl.question('Enter Min: ', min => {
-        console.log(`Min: ${min}`);
-        console.log(`I'm thinking of a number between ${min} and ${max}...`);
-        secretNumber = randomInRange(min, max);
-        askGuess();
-      });
-    });
-    
+    let min = prompt('Enter Minimum Number: ');
+    let max = prompt('Enter Maximum Number: ');
+    secretNumber = randomInRange(Number(min), Number(max));
+    askGuess()
 }
 
 // ##### MAIN PROGRAM ##### //
 
+
+//askGuess()
 askRange();
+
+
+
+//    // loop and ask question again until the answer is correct
+// while (!checkGuess(answer)) {
+//     rl.question('Please Enter a number ', (answer) => {
+//         console.log(`Your Guess is: ${answer}`);
+//         rl.close();
+//     });      
+// }
 
